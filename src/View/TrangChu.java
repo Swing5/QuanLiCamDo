@@ -5,6 +5,7 @@
  */
 package View;
 
+import swing5_camdo.GiaHan;
 import swing5_camdo.ThanhLyHopDong;
 
 /**
@@ -58,6 +59,7 @@ public class TrangChu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Trang Chủ");
+        setLocation(new java.awt.Point(350, 150));
 
         jPanel2.setBackground(new java.awt.Color(236, 240, 241));
 
@@ -258,6 +260,11 @@ public class TrangChu extends javax.swing.JFrame {
         jMenu2.setText("Xử lí hợp đồng   ");
 
         jMenuItem3.setText("Gia Hạn");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem3);
 
         jMenuItem4.setText("Thanh Lý");
@@ -319,6 +326,12 @@ public class TrangChu extends javax.swing.JFrame {
         new ThanhLyHopDong().show();
         this.hide();
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        new GiaHan().show();
+        this.hide();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
