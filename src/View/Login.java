@@ -45,9 +45,9 @@ public class Login extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         tfTenDN = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        tfMK = new javax.swing.JTextField();
         btDN = new javax.swing.JButton();
         btDK = new javax.swing.JButton();
+        tfMK = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Đăng nhập");
@@ -80,9 +80,6 @@ public class Login extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("UTM Loko", 0, 24)); // NOI18N
         jLabel1.setText("Đăng Nhập ");
 
-        tfMK.setBackground(new java.awt.Color(236, 240, 241));
-        tfMK.setBorder(null);
-
         btDN.setBackground(new java.awt.Color(0, 0, 0));
         btDN.setFont(new java.awt.Font("UTM Avo", 0, 14)); // NOI18N
         btDN.setForeground(new java.awt.Color(255, 255, 255));
@@ -102,6 +99,9 @@ public class Login extends javax.swing.JFrame {
                 btDKActionPerformed(evt);
             }
         });
+
+        tfMK.setBackground(new java.awt.Color(236, 240, 241));
+        tfMK.setBorder(null);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -126,11 +126,10 @@ public class Login extends javax.swing.JFrame {
                                         .addComponent(jLabel2)
                                         .addComponent(jLabel4))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(jLabel1)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(tfTenDN, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(tfMK, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                        .addComponent(tfTenDN, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
+                                        .addComponent(tfMK))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(172, 172, 172)
                         .addComponent(btDK, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -155,9 +154,9 @@ public class Login extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tfMK, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tfMK))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -263,7 +262,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField tfMK;
+    private javax.swing.JPasswordField tfMK;
     private javax.swing.JTextField tfTenDN;
     // End of variables declaration//GEN-END:variables
 }
