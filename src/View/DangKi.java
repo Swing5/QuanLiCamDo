@@ -35,18 +35,22 @@ public class DangKi extends javax.swing.JFrame {
     private void initComponents() {
 
         jCheckBox1 = new javax.swing.JCheckBox();
+        NgonNgu = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         btDK = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lbTieuDe = new javax.swing.JLabel();
+        lbNhapSDT = new javax.swing.JLabel();
         tfSDT = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
+        lbCFMK = new javax.swing.JLabel();
+        lbMK = new javax.swing.JLabel();
+        btback = new javax.swing.JButton();
+        lbTenDN = new javax.swing.JLabel();
         tfTenDN = new javax.swing.JTextField();
         tfMK = new javax.swing.JPasswordField();
         tfXNMK = new javax.swing.JPasswordField();
+        rbVIE = new javax.swing.JRadioButton();
+        rbENG = new javax.swing.JRadioButton();
+        lbNN = new javax.swing.JLabel();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -55,6 +59,7 @@ public class DangKi extends javax.swing.JFrame {
         setLocation(new java.awt.Point(400, 150));
 
         jPanel1.setBackground(new java.awt.Color(236, 240, 241));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btDK.setBackground(new java.awt.Color(0, 153, 0));
         btDK.setFont(new java.awt.Font("UTM Avo", 0, 12)); // NOI18N
@@ -64,87 +69,72 @@ public class DangKi extends javax.swing.JFrame {
                 btDKActionPerformed(evt);
             }
         });
+        jPanel1.add(btDK, new org.netbeans.lib.awtextra.AbsoluteConstraints(167, 327, 225, 34));
 
-        jLabel1.setFont(new java.awt.Font("UTM Avo", 1, 24)); // NOI18N
-        jLabel1.setText("Đăng kí tài khoản");
+        lbTieuDe.setFont(new java.awt.Font("UTM Avo", 1, 24)); // NOI18N
+        lbTieuDe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbTieuDe.setLabelFor(lbTieuDe);
+        lbTieuDe.setText("Đăng kí tài khoản");
+        lbTieuDe.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.add(lbTieuDe, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 49, 536, -1));
 
-        jLabel3.setFont(new java.awt.Font("UTM Avo", 0, 12)); // NOI18N
-        jLabel3.setText("Nhập SĐT:");
+        lbNhapSDT.setFont(new java.awt.Font("UTM Avo", 0, 12)); // NOI18N
+        lbNhapSDT.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbNhapSDT.setText("Nhập SĐT:");
+        jPanel1.add(lbNhapSDT, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 173, 118, -1));
+        jPanel1.add(tfSDT, new org.netbeans.lib.awtextra.AbsoluteConstraints(167, 168, 315, 30));
 
-        jLabel4.setFont(new java.awt.Font("UTM Avo", 0, 12)); // NOI18N
-        jLabel4.setText("Xác nhận mật khẩu:");
+        lbCFMK.setFont(new java.awt.Font("UTM Avo", 0, 12)); // NOI18N
+        lbCFMK.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbCFMK.setText("Xác nhận mật khẩu:");
+        jPanel1.add(lbCFMK, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 269, 120, -1));
 
-        jLabel2.setFont(new java.awt.Font("UTM Avo", 0, 12)); // NOI18N
-        jLabel2.setText("Mật Khẩu:");
+        lbMK.setFont(new java.awt.Font("UTM Avo", 0, 12)); // NOI18N
+        lbMK.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbMK.setText("Mật Khẩu:");
+        jPanel1.add(lbMK, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 221, 118, -1));
 
-        jButton2.setFont(new java.awt.Font("UTM Avo", 0, 12)); // NOI18N
-        jButton2.setText("Back");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btback.setFont(new java.awt.Font("UTM Avo", 0, 12)); // NOI18N
+        btback.setText("Trờ lại");
+        btback.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btbackActionPerformed(evt);
             }
         });
+        jPanel1.add(btback, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 73, -1));
 
-        jLabel5.setFont(new java.awt.Font("UTM Avo", 0, 12)); // NOI18N
-        jLabel5.setText("Tên đăng nhập:");
+        lbTenDN.setFont(new java.awt.Font("UTM Avo", 0, 12)); // NOI18N
+        lbTenDN.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbTenDN.setText("Tên đăng nhập:");
+        jPanel1.add(lbTenDN, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 125, 118, -1));
+        jPanel1.add(tfTenDN, new org.netbeans.lib.awtextra.AbsoluteConstraints(167, 120, 315, 30));
+        jPanel1.add(tfMK, new org.netbeans.lib.awtextra.AbsoluteConstraints(167, 216, 315, 30));
+        jPanel1.add(tfXNMK, new org.netbeans.lib.awtextra.AbsoluteConstraints(167, 264, 315, 30));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(144, 144, 144)
-                                .addComponent(jLabel1))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel5))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btDK, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfTenDN)
-                                    .addComponent(tfSDT)
-                                    .addComponent(tfMK)
-                                    .addComponent(tfXNMK, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE))))))
-                .addContainerGap(49, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton2)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfTenDN, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfSDT, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(tfMK, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(tfXNMK, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addComponent(btDK, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
-        );
+        NgonNgu.add(rbVIE);
+        rbVIE.setFont(new java.awt.Font("UTM Avo", 1, 12)); // NOI18N
+        rbVIE.setSelected(true);
+        rbVIE.setText("VIE");
+        rbVIE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbVIEActionPerformed(evt);
+            }
+        });
+        jPanel1.add(rbVIE, new org.netbeans.lib.awtextra.AbsoluteConstraints(403, 402, -1, -1));
+
+        NgonNgu.add(rbENG);
+        rbENG.setFont(new java.awt.Font("UTM Avo", 1, 12)); // NOI18N
+        rbENG.setText("ENG");
+        rbENG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbENGActionPerformed(evt);
+            }
+        });
+        jPanel1.add(rbENG, new org.netbeans.lib.awtextra.AbsoluteConstraints(466, 402, -1, -1));
+
+        lbNN.setFont(new java.awt.Font("UTM Avo", 0, 12)); // NOI18N
+        lbNN.setText("Ngôn ngữ");
+        jPanel1.add(lbNN, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 407, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -154,19 +144,19 @@ public class DangKi extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btbackActionPerformed
         // TODO add your handling code here:
         if (JOptionPane.showConfirmDialog(null, "Quay lại trang đăng nhập") == 0) {
             new Login().show();
             this.hide();
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btbackActionPerformed
 
     private void btDKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDKActionPerformed
         // TODO add your handling code here:
@@ -209,6 +199,30 @@ public class DangKi extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btDKActionPerformed
 
+    private void rbVIEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbVIEActionPerformed
+        // TODO add your handling code here:
+        btback.setText("Trở lại");
+        lbTieuDe.setText("Đăng kí tài khoản");
+        lbTenDN.setText("Tên đăng nhập:");
+        lbNhapSDT.setText("Nhập SĐT:");
+        lbMK.setText("Mật khẩu:");
+        lbCFMK.setText("Xác nhận mật khẩu:");
+        btDK.setText("Đăng kí");
+        lbNN.setText("Ngôn Ngữ");
+    }//GEN-LAST:event_rbVIEActionPerformed
+
+    private void rbENGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbENGActionPerformed
+        // TODO add your handling code here:
+        btback.setText("Back");
+        lbTieuDe.setText("Sign Up");
+        lbTenDN.setText("User Name:");
+        lbNhapSDT.setText("Number phone:");
+        lbMK.setText("Password:");
+        lbCFMK.setText("Confirm password:");
+        btDK.setText("Sign Up");
+        lbNN.setText("Language");
+    }//GEN-LAST:event_rbENGActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -245,15 +259,19 @@ public class DangKi extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup NgonNgu;
     private javax.swing.JButton btDK;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btback;
     private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lbCFMK;
+    private javax.swing.JLabel lbMK;
+    private javax.swing.JLabel lbNN;
+    private javax.swing.JLabel lbNhapSDT;
+    private javax.swing.JLabel lbTenDN;
+    private javax.swing.JLabel lbTieuDe;
+    private javax.swing.JRadioButton rbENG;
+    private javax.swing.JRadioButton rbVIE;
     private javax.swing.JPasswordField tfMK;
     private javax.swing.JTextField tfSDT;
     private javax.swing.JTextField tfTenDN;

@@ -8,7 +8,6 @@ create table NguoiDung(
 	matKhau nchar(20) not null
 )
 go
-
 create table NhanVien(
 	maNV	nvarchar(20) not null primary key,
 	hoTen	nvarchar(50) not null,
