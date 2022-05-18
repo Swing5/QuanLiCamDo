@@ -5,6 +5,8 @@
  */
 package View;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import swing5_camdo.GiaHan;
 import swing5_camdo.ThanhLyHopDong;
 
@@ -318,8 +320,12 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-        new QLNV().show();
+        try {
+            // TODO add your handling code here:
+            new QuanLiNhanVien().show();
+        } catch (Exception ex) {
+            Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.hide();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
