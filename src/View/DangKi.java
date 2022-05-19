@@ -10,7 +10,9 @@ import DoDung.NguoiDung;
 import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Icon;
 import javax.swing.JOptionPane;
+import javax.swing.text.IconView;
 
 /**
  *
@@ -61,8 +63,9 @@ public class DangKi extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(236, 240, 241));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btDK.setBackground(new java.awt.Color(0, 153, 0));
-        btDK.setFont(new java.awt.Font("UTM Avo", 0, 12)); // NOI18N
+        btDK.setBackground(new java.awt.Color(46, 204, 113));
+        btDK.setFont(new java.awt.Font("UTM Avo", 1, 12)); // NOI18N
+        btDK.setForeground(new java.awt.Color(255, 255, 255));
         btDK.setText("Đăng kí");
         btDK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,7 +137,7 @@ public class DangKi extends javax.swing.JFrame {
 
         lbNN.setFont(new java.awt.Font("UTM Avo", 0, 12)); // NOI18N
         lbNN.setText("Ngôn ngữ");
-        jPanel1.add(lbNN, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 407, -1, -1));
+        jPanel1.add(lbNN, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 400, -1, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -152,9 +155,16 @@ public class DangKi extends javax.swing.JFrame {
 
     private void btbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btbackActionPerformed
         // TODO add your handling code here:
-        if (JOptionPane.showConfirmDialog(null, "Quay lại trang đăng nhập") == 0) {
-            new Login().show();
-            this.hide();
+        if (rbVIE.isSelected()){
+            if(JOptionPane.showConfirmDialog(this,"Bạn có muốn quay lại trang chủ không ?")==0){
+                new TrangChu().show();
+                this.hide();
+            }
+        }else{
+            if(JOptionPane.showConfirmDialog(this,"Do you want to go back to the homepage ?")==0){
+                new TrangChu().show();
+                this.hide();
+            }
         }
     }//GEN-LAST:event_btbackActionPerformed
 
