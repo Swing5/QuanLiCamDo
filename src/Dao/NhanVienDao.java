@@ -10,6 +10,7 @@ import DoDung.NhanVien;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Set;
 
@@ -42,5 +43,23 @@ public class NhanVienDao {
             e.printStackTrace();
         }
         return list;
+    }
+    
+    public void insertNV(NhanVien nv) throws ClassNotFoundException, SQLException{
+        String sql = "insert into NhanVien(maNV,hoTen,ngaySinh,chucVu,email,sdt,gioiTinh,diaChi)"
+                + "values (?,?,?,?,?,?,?,?)";
+        
+        Connection conn = DatabaseHelper.getConnection();
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1,nv.getMaNV());
+        ps.setString(2, nv.getHoTen());
+        ps.setString(3, nv.getNgaySinh());
+        ps.setString(4,nv.getChucVu());
+        ps.setString(5,nv.getEmail());
+        ps.setString(6,nv.getSDT());
+        ps.setString(7,nv.getGioiTinh());
+        ps.setString(8,nv.getDiaChi());
+        
+        ps.executeUpdate();
     }
 }
