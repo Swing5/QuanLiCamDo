@@ -56,6 +56,7 @@ public class AddHopDong extends javax.swing.JFrame {
         backBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Thêm Hợp Đồng");
 
         jPanel1.setBackground(new java.awt.Color(236, 240, 241));
 

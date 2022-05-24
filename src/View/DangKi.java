@@ -156,13 +156,13 @@ public class DangKi extends javax.swing.JFrame {
     private void btbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btbackActionPerformed
         // TODO add your handling code here:
         if (rbVIE.isSelected()){
-            if(JOptionPane.showConfirmDialog(this,"Bạn có muốn quay lại trang chủ không ?")==0){
-                new TrangChu().show();
+            if(JOptionPane.showConfirmDialog(this,"Bạn có muốn quay lại trang đăng nhập không ?")==0){
+                new Login().show();
                 this.hide();
             }
         }else{
-            if(JOptionPane.showConfirmDialog(this,"Do you want to go back to the homepage ?")==0){
-                new TrangChu().show();
+            if(JOptionPane.showConfirmDialog(this,"Do you want to go back to the login ?")==0){
+                new Login().show();
                 this.hide();
             }
         }
