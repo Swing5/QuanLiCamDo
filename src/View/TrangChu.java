@@ -7,6 +7,7 @@ package View;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import swing5_camdo.AddHopDong;
 import swing5_camdo.GiaHan;
 import swing5_camdo.ThanhLyHopDong;
 
@@ -40,7 +41,7 @@ public class TrangChu extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        addHopDong = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
@@ -125,9 +126,14 @@ public class TrangChu extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
         jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
-        jButton1.setFont(new java.awt.Font("UTM Avo", 0, 10)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_add_30px.png"))); // NOI18N
-        jButton1.setText("THÊM");
+        addHopDong.setFont(new java.awt.Font("UTM Avo", 0, 10)); // NOI18N
+        addHopDong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_add_30px.png"))); // NOI18N
+        addHopDong.setText("THÊM");
+        addHopDong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addHopDongActionPerformed(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("UTM Avo", 0, 10)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_delete_30px.png"))); // NOI18N
@@ -209,7 +215,7 @@ public class TrangChu extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(addHopDong, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(41, 41, 41)
                                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -237,7 +243,7 @@ public class TrangChu extends javax.swing.JFrame {
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(addHopDong)
                     .addComponent(jButton3)
                     .addComponent(jButton5)
                     .addComponent(jButton4)
@@ -347,6 +353,12 @@ public class TrangChu extends javax.swing.JFrame {
         this.hide();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void addHopDongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addHopDongActionPerformed
+        // TODO add your handling code here:
+        new AddHopDong().show();
+        this.dispose();
+    }//GEN-LAST:event_addHopDongActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -383,7 +395,7 @@ public class TrangChu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton addHopDong;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
