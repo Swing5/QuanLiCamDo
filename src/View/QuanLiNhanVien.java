@@ -5,13 +5,18 @@
  */
 package View;
 
+import Connect.DatabaseHelper;
 import Dao.NhanVienDao;
 import DoDung.NhanVien;
+import java.awt.Color;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import java.sql.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 /**
  *
@@ -37,7 +42,31 @@ public class QuanLiNhanVien extends javax.swing.JFrame {
                 nv.getMaNV(),nv.getHoTen(),nv.getNgaySinh(),nv.getChucVu(),nv.getEmail(),nv.getSDT(),nv.getGioiTinh(),nv.getDiaChi()
             });
         }
+            jTable1.setModel(model);
+            jTable1.getSelectionModel().addListSelectionListener(new ListSelectionListener() {                 
+                @Override
+                public void valueChanged(ListSelectionEvent e) {
+                    if (jTable1.getSelectedRow() >= 0) {
+                        tfMNV.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString());
+                        tfHoten.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 1).toString());
+                        tfNgaysinh.setText(jTable1.getValueAt(jTable1.getSelectedRow(),2).toString());
+                        tfChucVu.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 3).toString());
+                        tfEmail.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 4).toString());
+                        tfSDT.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 5).toString());
+                        String s = jTable1.getValueAt(jTable1.getSelectedRow(), 6).toString();
+                        if (s.equals("Nam")) {
+                            rbNam.setSelected(true);
+                        } else {
+                            rbNu.setSelected(true);
+                        }
+                        tfDiaChi.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 7).toString());
+                        
+                    }
+                }      
+            });
     }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -145,6 +174,11 @@ public class QuanLiNhanVien extends javax.swing.JFrame {
         btDelete.setFont(new java.awt.Font("UTM Avo", 0, 12)); // NOI18N
         btDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_delete_30px.png"))); // NOI18N
         btDelete.setText("Xoá");
+        btDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDeleteActionPerformed(evt);
+            }
+        });
 
         btExit.setFont(new java.awt.Font("UTM Avo", 0, 12)); // NOI18N
         btExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_export_30px.png"))); // NOI18N
@@ -231,7 +265,7 @@ public class QuanLiNhanVien extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btExit)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addContainerGap(117, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addComponent(jScrollPane1)
@@ -349,9 +383,39 @@ public class QuanLiNhanVien extends javax.swing.JFrame {
             
                     
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
+            JOptionPane.showMessageDialog(this, "Đã tồn tại mã nhân viên trong danh sách");
         }
     }//GEN-LAST:event_btADDActionPerformed
+
+    private void btDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteActionPerformed
+        // TODO add your handling code here:
+       String id = tfMNV.getText();
+        StringBuilder sb = new StringBuilder();
+        if(tfMNV.getText().equals("")){
+            sb.append("Mã sinh viên không được để trống");
+            tfMNV.setBackground(Color.red);
+       }else{
+            tfMNV.setBackground(Color.WHITE);
+        }
+        if(sb.length()>0){
+            JOptionPane.showMessageDialog(this, sb);
+            return;
+        }
+        int confirm = JOptionPane.showConfirmDialog(QuanLiNhanVien.this, "Bạn có chắc chắn muốn xoá không");
+            
+            if(confirm == JOptionPane.YES_OPTION){
+                try {
+                    NhanVienDao dao = new NhanVienDao();
+                    dao.delete(id);
+                    LoadData(new NhanVienDao().getListNhanVien());
+                    JOptionPane.showMessageDialog(this,"Đã xoá khỏi danh sách");
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
+                    e.printStackTrace();
+                }
+            }
+        
+    }//GEN-LAST:event_btDeleteActionPerformed
 
     /**
      * @param args the command line arguments

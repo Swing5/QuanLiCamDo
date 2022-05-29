@@ -174,8 +174,8 @@ public class DangKi extends javax.swing.JFrame {
         String confilm = tfXNMK.getText();
         
         if(tfTenDN.getText().equals("")){
-            JOptionPane.showMessageDialog(this, "Tên đăng nhập không được để trông");
-            return;
+        JOptionPane.showMessageDialog(this, "Tên đăng nhập không được để trông");
+        return;
         }
         if(tfSDT.getText().equals("")){
             JOptionPane.showMessageDialog(this, "Vui lòng nhập SĐT");
@@ -189,6 +189,7 @@ public class DangKi extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Vui lòng xác nhận mật khẩu");
             return;
         }
+        
         if(pass.equals(confilm)){
             try {
                 NguoiDung nd = new NguoiDung();
@@ -202,11 +203,14 @@ public class DangKi extends javax.swing.JFrame {
                 new Login().show();
                 this.hide();
             } catch (Exception ex) {
-                Logger.getLogger(DangKi.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(this,"Tên đăng nhập đã tồn tại");
+                tfTenDN.setText("");
             }
         }else{
             JOptionPane.showMessageDialog(this,"Mật khẩu và xác nhận cần khớp với nhau");
+            
         }
+        
     }//GEN-LAST:event_btDKActionPerformed
 
     private void rbVIEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbVIEActionPerformed

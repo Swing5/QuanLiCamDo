@@ -62,4 +62,13 @@ public class NhanVienDao {
         
         ps.executeUpdate();
     }
+    public boolean delete(String MaSV) throws Exception{
+       String sql = " delete from NhanVien where MaNV = ? ";
+     
+            Connection conn = DatabaseHelper.getConnection();
+            PreparedStatement pr = conn.prepareStatement(sql);
+                pr.setString(1,MaSV);
+       
+        return pr.executeUpdate()>0;
+   }
 }
