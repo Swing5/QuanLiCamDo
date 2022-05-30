@@ -19,5 +19,16 @@ create table NhanVien(
 	diaChi		nvarchar(50)
 	)
 
-insert into NhanVien(maNV,hoTen,ngaySinh,chucVu,email,sdt,gioiTinh,diaChi)
-values ('NV001',N'Nguyễn Văn A','12/10/2002','Nhân Viên','aaa@gmail.com','03965226','Nam',N'Thái Nguyên')
+go
+create table HopDong(
+	maHD	varchar(10) not null primary key,
+	tenKH	nvarchar(50) not null,
+	doCamCo	nvarchar(50) not null,
+	diaChi	nvarchar(50) not null,
+	soDT	varchar(13),
+	soCM	varchar(20),
+	soTienCam	money,
+	laiNgay		money,
+	ngayCam		nchar(30),
+	hanCam		nchar(30)
+)

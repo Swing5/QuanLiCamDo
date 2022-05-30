@@ -5,8 +5,13 @@
  */
 package View;
 
+import Dao.NhanVienDao;
+import Dao.TrangChuDao;
+import DoDung.NhanVien;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 import swing5_camdo.AddHopDong;
 import swing5_camdo.GiaHan;
 import swing5_camdo.ThanhLyHopDong;
@@ -16,13 +21,25 @@ import swing5_camdo.ThanhLyHopDong;
  * @author Admin
  */
 public class TrangChu extends javax.swing.JFrame {
-
+    private List<DoDung.TrangChu> list;
+    DefaultTableModel model;
     /**
      * Creates new form TrangChu
      */
-    public TrangChu() {
+    public TrangChu() throws Exception {
         initComponents();
+        list = new TrangChuDao().getListHopDong();
+        model = (DefaultTableModel) jTable1.getModel();
+        LoadData(new TrangChuDao().getListHopDong());
     }
+     private void LoadData(List<DoDung.TrangChu> list){
+        model.setRowCount(0);
+        for(DoDung.TrangChu tc : list){
+            model.addRow(new Object[]{
+                tc.getMaHD(),tc.getTenKH(),tc.getDoCam(),tc.getDiaChi(),tc.getSoDT(),tc.getSoCM(),tc.getSoTienCam(),tc.getLaiNgay(),tc.getNgayCam(),tc.getHanCam()
+            });
+        }
+     }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -113,13 +130,13 @@ public class TrangChu extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "STT", "Mã hợp đồng", "Tên khách hàng", "Đồ cầm cố", "Tiền cầm cố", "Lãi ngày", "Số ngày cầm", "Ngày cầm"
+                "Mã hợp đồng", "Tên khách hàng", "Đồ cầm cố", "Địa chỉ", "Số ĐT", "Số CMND/CCCD", "Tổng số tiền", "Lãi ngày", "Ngày Cầm", "Hạn Cầm"
             }
         ));
         jTable1.setCellSelectionEnabled(true);
@@ -389,7 +406,11 @@ public class TrangChu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TrangChu().setVisible(true);
+                try {
+                    new TrangChu().setVisible(true);
+                } catch (Exception ex) {
+                    Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

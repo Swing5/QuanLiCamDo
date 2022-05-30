@@ -6,6 +6,8 @@
 package swing5_camdo;
 
 import View.TrangChu;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -164,8 +166,12 @@ public class GiaHan extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        new TrangChu().show();
+        try {
+            // TODO add your handling code here:
+            new TrangChu().show();
+        } catch (Exception ex) {
+            Logger.getLogger(GiaHan.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.hide();
     }//GEN-LAST:event_jButton3ActionPerformed
 

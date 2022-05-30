@@ -6,6 +6,8 @@
 package swing5_camdo;
 
 import View.TrangChu;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -47,13 +49,13 @@ public class AddHopDong extends javax.swing.JFrame {
         tfSoHD = new javax.swing.JTextField();
         btnHuy = new javax.swing.JButton();
         labelTenKH = new javax.swing.JLabel();
-        tfSoNgayCam = new javax.swing.JTextField();
         tfDiaChi = new javax.swing.JTextField();
         labelDiaChi = new javax.swing.JLabel();
-        labelSoNgayCam = new javax.swing.JLabel();
         tfTienCam = new javax.swing.JTextField();
         tfNgayCam = new javax.swing.JTextField();
         backBtn = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Thêm Hợp Đồng");
@@ -103,9 +105,6 @@ public class AddHopDong extends javax.swing.JFrame {
         labelDiaChi.setFont(new java.awt.Font("UTM Avo", 0, 12)); // NOI18N
         labelDiaChi.setText("Địa chỉ:");
 
-        labelSoNgayCam.setFont(new java.awt.Font("UTM Avo", 0, 12)); // NOI18N
-        labelSoNgayCam.setText("Số ngày cầm:");
-
         backBtn.setFont(new java.awt.Font("UTM Avo", 0, 11)); // NOI18N
         backBtn.setText("Back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -113,6 +112,9 @@ public class AddHopDong extends javax.swing.JFrame {
                 backBtnActionPerformed(evt);
             }
         });
+
+        jLabel1.setFont(new java.awt.Font("UTM Avo", 0, 12)); // NOI18N
+        jLabel1.setText("Hạn cầm:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -138,22 +140,21 @@ public class AddHopDong extends javax.swing.JFrame {
                                     .addComponent(labelCMND)
                                     .addComponent(labelTienCam)
                                     .addComponent(labelLaiNgay)
-                                    .addComponent(labelSoNgayCam)
-                                    .addComponent(labelNgayCam))
+                                    .addComponent(labelNgayCam)
+                                    .addComponent(jLabel1))
                                 .addGap(30, 30, 30)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextField1)
+                                    .addComponent(tfNgayCam)
                                     .addComponent(labelTitle)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(tfDoCamCo)
-                                        .addComponent(tfDiaChi)
-                                        .addComponent(tfTenKH)
-                                        .addComponent(tfSoHD)
-                                        .addComponent(tfSoDT, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tfCMND, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tfTienCam, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tfSoNgayCam, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tfNgayCam)
-                                        .addComponent(tfLaiNgay, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(tfDoCamCo)
+                                    .addComponent(tfDiaChi)
+                                    .addComponent(tfTenKH)
+                                    .addComponent(tfSoHD)
+                                    .addComponent(tfSoDT, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfCMND, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfTienCam, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfLaiNgay, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -201,12 +202,12 @@ public class AddHopDong extends javax.swing.JFrame {
                     .addComponent(tfLaiNgay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelSoNgayCam)
-                    .addComponent(tfSoNgayCam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelNgayCam)
                     .addComponent(tfNgayCam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnXacNhan)
@@ -235,8 +236,12 @@ public class AddHopDong extends javax.swing.JFrame {
     }//GEN-LAST:event_tfCMNDActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-        // TODO add your handling code here:
-        new TrangChu().show();
+        try {
+            // TODO add your handling code here:
+            new TrangChu().show();
+        } catch (Exception ex) {
+            Logger.getLogger(AddHopDong.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.dispose();
     }//GEN-LAST:event_backBtnActionPerformed
 
@@ -279,7 +284,9 @@ public class AddHopDong extends javax.swing.JFrame {
     private javax.swing.JButton backBtn;
     private javax.swing.JButton btnHuy;
     private javax.swing.JButton btnXacNhan;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel labelCMND;
     private javax.swing.JLabel labelDiaChi;
     private javax.swing.JLabel labelDoCamCo;
@@ -287,7 +294,6 @@ public class AddHopDong extends javax.swing.JFrame {
     private javax.swing.JLabel labelNgayCam;
     private javax.swing.JLabel labelSDT;
     private javax.swing.JLabel labelSoHD;
-    private javax.swing.JLabel labelSoNgayCam;
     private javax.swing.JLabel labelTenKH;
     private javax.swing.JLabel labelTienCam;
     private javax.swing.JLabel labelTitle;
@@ -298,7 +304,6 @@ public class AddHopDong extends javax.swing.JFrame {
     private javax.swing.JTextField tfNgayCam;
     private javax.swing.JTextField tfSoDT;
     private javax.swing.JTextField tfSoHD;
-    private javax.swing.JTextField tfSoNgayCam;
     private javax.swing.JTextField tfTenKH;
     private javax.swing.JTextField tfTienCam;
     // End of variables declaration//GEN-END:variables

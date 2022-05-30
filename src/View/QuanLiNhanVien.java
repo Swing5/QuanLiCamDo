@@ -348,8 +348,12 @@ public class QuanLiNhanVien extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExitActionPerformed
-        // TODO add your handling code here:
-        new TrangChu().show();
+        try {
+            // TODO add your handling code here:
+            new TrangChu().show();
+        } catch (Exception ex) {
+            Logger.getLogger(QuanLiNhanVien.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.hide();
     }//GEN-LAST:event_btExitActionPerformed
 
