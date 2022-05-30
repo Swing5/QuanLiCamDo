@@ -108,7 +108,9 @@ public class KhachHangDao {
     }
      public void updateUser(KhachHang tl) throws ClassNotFoundException, SQLException{
         Connection connection = DatabaseHelper.getConnection();
-        String sql = "Update KhachHang set tenKH = '?' , diaChi = '?' , SDT ? where maKH = ? ";
+        String sql = "Update KhachHang "
+                + "set tenKH = ? , diaChi = ? , SDT ? "
+                + "where maKH = ? ";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(4, tl.getMaKH());

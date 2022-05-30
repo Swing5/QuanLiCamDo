@@ -253,10 +253,11 @@ public class CapNhatKH extends javax.swing.JFrame {
         if(otp == JOptionPane.YES_OPTION){
             try {
                 KhachHang bk = new KhachHang();
-                bk.setMaKH(jComboBox_id.getSelectedItem().toString());
+                
                 bk.setTenKH(jTextField_Title.getText());
                 bk.setDiaChi(jTextField_Price.getText());
                 bk.setSDT(Integer.parseInt(jTextField_Price1.getText()));
+                bk.setMaKH(jComboBox_id.getSelectedItem().toString());
                 try {
                     qlkh.updateUser(bk);
                 } catch (ClassNotFoundException ex) {
