@@ -71,4 +71,22 @@ public class NhanVienDao {
        
         return pr.executeUpdate()>0;
    }
+    public void update(NhanVien nv ) throws Exception{
+        String sql = "UPDATE NhanVien "
+                + "SET hoTen = ?,ngaySinh = ?,chucVu = ?,email = ?,sdt = ?,gioiTinh= ?,diaChi = ? "
+                + "WHERE maNV = ?";
+    
+        Connection conn = DatabaseHelper.getConnection();
+        PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, nv.getHoTen());
+            ps.setString(2, nv.getNgaySinh());
+            ps.setString(3, nv.getChucVu());
+            ps.setString(4, nv.getEmail());
+            ps.setString(5, nv.getSDT());
+            ps.setString(6, nv.getGioiTinh());
+            ps.setString(7, nv.getDiaChi());
+            ps.setString(8, nv.getMaNV());
+
+            ps.executeUpdate();
+    }
 }

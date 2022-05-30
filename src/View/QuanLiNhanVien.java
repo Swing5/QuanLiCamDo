@@ -167,6 +167,11 @@ public class QuanLiNhanVien extends javax.swing.JFrame {
         btUpdate.setFont(new java.awt.Font("UTM Avo", 0, 12)); // NOI18N
         btUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_refresh_30px.png"))); // NOI18N
         btUpdate.setText("Sửa");
+        btUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btUpdateActionPerformed(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("UTM Avo", 0, 12)); // NOI18N
         jLabel9.setText("Địa chỉ:");
@@ -416,6 +421,32 @@ public class QuanLiNhanVien extends javax.swing.JFrame {
             }
         
     }//GEN-LAST:event_btDeleteActionPerformed
+
+    private void btUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btUpdateActionPerformed
+        // TODO add your handling code here:
+        for(NhanVien nv : list){
+            if(nv.getMaNV().equals(tfMNV.getText())){
+                try {
+                    nv.setHoTen(tfHoten.getText());
+                    nv.setNgaySinh(tfNgaysinh.getText());
+                    nv.setChucVu(tfChucVu.getText());
+                    nv.setEmail(tfEmail.getText());
+                    nv.setSDT(tfSDT.getText());
+                    nv.setGioiTinh(rbNam.isSelected()? "Nam" : "Nữ");
+                    nv.setDiaChi(tfDiaChi.getText());
+                    nv.setMaNV(tfMNV.getText());
+
+                    NhanVienDao dao = new NhanVienDao();
+                    dao.update(nv);
+                    LoadData(new NhanVienDao().getListNhanVien());
+                    JOptionPane.showMessageDialog(this, "Cập Nhật thành công");
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, "Thất Bại");
+                    e.printStackTrace();
+                }
+            };
+        }
+    }//GEN-LAST:event_btUpdateActionPerformed
 
     /**
      * @param args the command line arguments
