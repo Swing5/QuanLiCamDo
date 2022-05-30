@@ -5,6 +5,8 @@
  */
 package swing5_camdo;
 
+import View.TrangChu;
+
 /**
  *
  * @author pc
@@ -51,9 +53,11 @@ public class AddHopDong extends javax.swing.JFrame {
         labelSoNgayCam = new javax.swing.JLabel();
         tfTienCam = new javax.swing.JTextField();
         tfNgayCam = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        backBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Thêm Hợp Đồng");
+        setLocation(new java.awt.Point(450, 100));
 
         jPanel1.setBackground(new java.awt.Color(236, 240, 241));
 
@@ -102,8 +106,13 @@ public class AddHopDong extends javax.swing.JFrame {
         labelSoNgayCam.setFont(new java.awt.Font("UTM Avo", 0, 12)); // NOI18N
         labelSoNgayCam.setText("Số ngày cầm:");
 
-        jButton1.setFont(new java.awt.Font("UTM Avo", 0, 11)); // NOI18N
-        jButton1.setText("Back");
+        backBtn.setFont(new java.awt.Font("UTM Avo", 0, 11)); // NOI18N
+        backBtn.setText("Back");
+        backBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -147,14 +156,14 @@ public class AddHopDong extends javax.swing.JFrame {
                                         .addComponent(tfLaiNgay, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
+                .addComponent(backBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelTitle)
                 .addGap(32, 32, 32)
@@ -225,6 +234,12 @@ public class AddHopDong extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfCMNDActionPerformed
 
+    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+        // TODO add your handling code here:
+        new TrangChu().show();
+        this.dispose();
+    }//GEN-LAST:event_backBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -261,9 +276,9 @@ public class AddHopDong extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backBtn;
     private javax.swing.JButton btnHuy;
     private javax.swing.JButton btnXacNhan;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labelCMND;
     private javax.swing.JLabel labelDiaChi;
