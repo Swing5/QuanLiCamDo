@@ -4,6 +4,15 @@
  */
 package View;
 
+import Connect.DatabaseHelper;
+import Dao.KhachHangDao;
+import DoDung.KhachHang;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author thuyd
@@ -13,9 +22,20 @@ public class QuanLyKhachHang extends javax.swing.JFrame {
     /**
      * Creates new form QuanLyKhachHang
      */
-    public QuanLyKhachHang() {
+    private List<KhachHang> ql;
+    private DefaultTableModel model;
+    DefaultTableModel defaultTableModel;
+    public QuanLyKhachHang() throws ClassNotFoundException, SQLException {
         initComponents();
         setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
+        model = (DefaultTableModel)jTable1.getModel();
+        showTable();
+    }
+    private void setTableData(List<KhachHang> ql){
+        for (KhachHang qltv : ql){
+            defaultTableModel.addRow(new Object[]{qltv.getMaKH(), qltv.getTenKH(), qltv.getDiaChi(),qltv.getSDT()});
+        }
     }
 
     /**
@@ -55,11 +75,20 @@ public class QuanLyKhachHang extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(236, 240, 241));
         jPanel2.setForeground(new java.awt.Color(236, 240, 241));
 
-        jTextField1.setText("Tìm kiếm theo địa chỉ");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         jButton1.setFont(new java.awt.Font("UTM Avo", 0, 11)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_search_20px.png"))); // NOI18N
         jButton1.setText("Tìm kiếm");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("UTM Avo", 0, 11)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_export_30px.png"))); // NOI18N
@@ -91,6 +120,11 @@ public class QuanLyKhachHang extends javax.swing.JFrame {
         jButton6.setFont(new java.awt.Font("UTM Avo", 0, 11)); // NOI18N
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_delete_30px.png"))); // NOI18N
         jButton6.setText("Xóa");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -132,9 +166,16 @@ public class QuanLyKhachHang extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel1.setText("          Lọc khách hàng");
 
+        buttonGroup1.add(jRadioButton1);
         jRadioButton1.setFont(new java.awt.Font("UTM Avo", 0, 11)); // NOI18N
         jRadioButton1.setText("Theo ngày");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
 
+        buttonGroup1.add(jRadioButton2);
         jRadioButton2.setFont(new java.awt.Font("UTM Avo", 0, 11)); // NOI18N
         jRadioButton2.setText("Theo tỉnh");
         jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -143,12 +184,15 @@ public class QuanLyKhachHang extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(jRadioButton3);
         jRadioButton3.setFont(new java.awt.Font("UTM Avo", 0, 11)); // NOI18N
         jRadioButton3.setText("Theo hình thức");
 
+        buttonGroup1.add(jRadioButton4);
         jRadioButton4.setFont(new java.awt.Font("UTM Avo", 0, 11)); // NOI18N
         jRadioButton4.setText("Theo số lượng");
 
+        buttonGroup1.add(jRadioButton5);
         jRadioButton5.setFont(new java.awt.Font("UTM Avo", 0, 11)); // NOI18N
         jRadioButton5.setText("Theo giá trị");
 
@@ -280,10 +324,6 @@ public class QuanLyKhachHang extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton2ActionPerformed
@@ -297,7 +337,14 @@ public class QuanLyKhachHang extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        CapNhatKH dk = new CapNhatKH();
+        CapNhatKH dk = null;
+        try {
+            dk = new CapNhatKH();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuanLyKhachHang.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(QuanLyKhachHang.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.dispose();
         dk.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -308,6 +355,53 @@ public class QuanLyKhachHang extends javax.swing.JFrame {
         this.hide();
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String id = jTextField1.getText();
+        if(id.length()>0){
+            try {
+                ql = new KhachHangDao().findTaiLieu(id);
+                model.setRowCount(0);
+                for(KhachHang qly : ql){
+                    model.addRow(new Object[]{
+                        qly.getMaKH(), qly.getTenKH(), qly.getDiaChi(), qly.getSDT()
+                    });
+                }
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(QuanLyKhachHang.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(QuanLyKhachHang.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        XoaKH xoa = new XoaKH();
+        this.dispose();
+        xoa.setVisible(true);
+    }//GEN-LAST:event_jButton6ActionPerformed
+    private void showTable() throws ClassNotFoundException, SQLException {
+        ql = new KhachHangDao().getAllUsers();
+        model.setRowCount(0);
+        for (KhachHang qly : ql) {
+            model.addRow(new Object[]{
+                qly.getMaKH(), qly.getTenKH(), qly.getDiaChi(), qly.getSDT()
+            });
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -338,7 +432,13 @@ public class QuanLyKhachHang extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new QuanLyKhachHang().setVisible(true);
+                try {
+                    new QuanLyKhachHang().setVisible(true);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(QuanLyKhachHang.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(QuanLyKhachHang.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

@@ -7,3 +7,9 @@ create table NguoiDung(
 	SDT nchar(12) not null,
 	matKhau nchar(20) not null
 )
+create table KhachHang(
+	maKH nvarchar(20) ,
+	tenKH nvarchar(50),
+	diaChi nvarchar(300),
+	SDT int
+)
