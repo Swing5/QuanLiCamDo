@@ -109,7 +109,7 @@ public class KhachHangDao {
      public void updateUser(KhachHang tl) throws ClassNotFoundException, SQLException{
         Connection connection = DatabaseHelper.getConnection();
         String sql = "Update KhachHang "
-                + "set tenKH = ? , diaChi = ? , SDT ? "
+                + "set tenKH = ? , diaChi = ? , SDT = ? "
                 + "where maKH = ? ";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -117,9 +117,8 @@ public class KhachHangDao {
             preparedStatement.setString(1, tl.getTenKH());
             preparedStatement.setString(2, tl.getDiaChi());
             preparedStatement.setInt(3, tl.getSDT());
-            if(preparedStatement.executeUpdate()>0){
-                System.out.println("Update thành công!");
-            };
+            preparedStatement.executeUpdate();
+
         } catch (Exception e) {
             e.printStackTrace();
         }

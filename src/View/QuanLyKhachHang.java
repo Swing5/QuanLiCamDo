@@ -312,8 +312,12 @@ public class QuanLyKhachHang extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        new TrangChu().show();
+        try {
+            // TODO add your handling code here:
+            new TrangChu().show();
+        } catch (Exception ex) {
+            Logger.getLogger(QuanLyKhachHang.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.hide();
     }//GEN-LAST:event_jButton3ActionPerformed
 

@@ -349,8 +349,12 @@ public class QuanLiNhanVien extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExitActionPerformed
-        // TODO add your handling code here:
-        new TrangChu().show();
+        try {
+            // TODO add your handling code here:
+            new TrangChu().show();
+        } catch (Exception ex) {
+            Logger.getLogger(QuanLiNhanVien.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.hide();
     }//GEN-LAST:event_btExitActionPerformed
 
@@ -425,28 +429,25 @@ public class QuanLiNhanVien extends javax.swing.JFrame {
 
     private void btUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btUpdateActionPerformed
         // TODO add your handling code here:
-        for(NhanVien nv : list){
-            if(nv.getMaNV().equals(tfMNV.getText())){
-                try {
-                    nv.setHoTen(tfHoten.getText());
-                    nv.setNgaySinh(tfNgaysinh.getText());
-                    nv.setChucVu(tfChucVu.getText());
-                    nv.setEmail(tfEmail.getText());
-                    nv.setSDT(tfSDT.getText());
-                    nv.setGioiTinh(rbNam.isSelected()? "Nam" : "Nữ");
-                    nv.setDiaChi(tfDiaChi.getText());
-                    nv.setMaNV(tfMNV.getText());
+        NhanVien nv = new NhanVien();
+        try {
+            nv.setHoTen(tfHoten.getText());
+            nv.setNgaySinh(tfNgaysinh.getText());
+            nv.setChucVu(tfChucVu.getText());
+            nv.setEmail(tfEmail.getText());
+            nv.setSDT(tfSDT.getText());
+            nv.setGioiTinh(rbNam.isSelected()? "Nam" : "Nữ");
+            nv.setDiaChi(tfDiaChi.getText());
+            nv.setMaNV(tfMNV.getText());
 
-                    NhanVienDao dao = new NhanVienDao();
-                    dao.update(nv);
-                    LoadData(new NhanVienDao().getListNhanVien());
-                    JOptionPane.showMessageDialog(this, "Cập Nhật thành công");
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(this, "Thất Bại");
-                    e.printStackTrace();
-                }
-            };
-        }
+            NhanVienDao dao = new NhanVienDao();
+            dao.update(nv);
+            LoadData(new NhanVienDao().getListNhanVien());
+            JOptionPane.showMessageDialog(this, "Cập Nhật thành công");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Thất Bại");
+            e.printStackTrace();
+        }   
     }//GEN-LAST:event_btUpdateActionPerformed
 
     /**

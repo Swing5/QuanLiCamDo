@@ -75,20 +75,17 @@
                                       <Component id="labelNgayCam" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="labelTitle" min="-2" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="tfDoCamCo" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="tfDiaChi" max="32767" attributes="0"/>
-                                          <Component id="tfTenKH" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="tfSoHD" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="tfSoDT" alignment="0" min="-2" pref="178" max="-2" attributes="0"/>
-                                          <Component id="tfCMND" alignment="0" min="-2" pref="178" max="-2" attributes="0"/>
-                                          <Component id="tfTienCam" alignment="0" min="-2" pref="178" max="-2" attributes="0"/>
-                                          <Component id="tfSoNgayCam" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
-                                          <Component id="tfNgayCam" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="tfLaiNgay" alignment="0" min="-2" pref="305" max="-2" attributes="0"/>
-                                      </Group>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="tfDoCamCo" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="tfDiaChi" max="32767" attributes="0"/>
+                                      <Component id="tfTenKH" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="tfmaHD" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="tfSoDT" alignment="0" min="-2" pref="178" max="-2" attributes="0"/>
+                                      <Component id="tfCMND" alignment="0" min="-2" pref="178" max="-2" attributes="0"/>
+                                      <Component id="tfTienCam" alignment="0" min="-2" pref="178" max="-2" attributes="0"/>
+                                      <Component id="tfsoNgay" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="tfLaiNgay" alignment="0" min="-2" pref="305" max="-2" attributes="0"/>
+                                      <Component id="tfngayCam" alignment="0" min="-2" pref="216" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -100,6 +97,7 @@
                   </Group>
                   <EmptySpace pref="30" max="32767" attributes="0"/>
               </Group>
+              <Component id="labelTitle" alignment="1" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -114,7 +112,7 @@
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="labelSoHD" min="-2" max="-2" attributes="0"/>
-                              <Component id="tfSoHD" min="-2" max="-2" attributes="0"/>
+                              <Component id="tfmaHD" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="labelTenKH" min="-2" max="-2" attributes="0"/>
@@ -153,13 +151,13 @@
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="labelSoNgayCam" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="tfSoNgayCam" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tfngayCam" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelNgayCam" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="labelNgayCam" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="tfNgayCam" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tfsoNgay" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelSoNgayCam" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -187,7 +185,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="UTM Avo" size="12" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="S&#x1ed1; h&#x1ee3;p &#x111;&#x1ed3;ng:"/>
+            <Property name="text" type="java.lang.String" value="M&#xe3; H&#x1ee3;p &#x110;&#x1ed3;ng:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="labelCMND">
@@ -220,7 +218,8 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="UTM Avo" size="18" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="H&#x1ee2;P &#x110;&#x1ed2;NG C&#x1ea6;M &#x110;&#x1ed2;"/>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="TH&#xca;M H&#x1ee2;P &#x110;&#x1ed2;NG C&#x1ea6;M &#x110;&#x1ed2;"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="labelDoCamCo">
@@ -256,8 +255,11 @@
             </Property>
             <Property name="text" type="java.lang.String" value="X&#xe1;c nh&#x1ead;n"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXacNhanActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="tfSoHD">
+        <Component class="javax.swing.JTextField" name="tfmaHD">
         </Component>
         <Component class="javax.swing.JButton" name="btnHuy">
           <Properties>
@@ -275,7 +277,7 @@
             <Property name="text" type="java.lang.String" value="T&#xea;n kh&#xe1;ch h&#xe0;ng:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="tfSoNgayCam">
+        <Component class="javax.swing.JTextField" name="tfngayCam">
         </Component>
         <Component class="javax.swing.JTextField" name="tfDiaChi">
         </Component>
@@ -297,7 +299,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="tfTienCam">
         </Component>
-        <Component class="javax.swing.JTextField" name="tfNgayCam">
+        <Component class="javax.swing.JTextField" name="tfsoNgay">
         </Component>
         <Component class="javax.swing.JButton" name="backBtn">
           <Properties>

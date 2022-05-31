@@ -257,14 +257,8 @@ public class CapNhatKH extends javax.swing.JFrame {
                 bk.setTenKH(jTextField_Title.getText());
                 bk.setDiaChi(jTextField_Price.getText());
                 bk.setSDT(Integer.parseInt(jTextField_Price1.getText()));
-                bk.setMaKH(jComboBox_id.getSelectedItem().toString());
-                try {
-                    qlkh.updateUser(bk);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(CapNhatKH.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (SQLException ex) {
-                    Logger.getLogger(CapNhatKH.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                bk.setMaKH((String) jComboBox_id.getSelectedItem());
+                qlkh.updateUser(bk);
                 JOptionPane.showMessageDialog(this, "Bạn đã sửa thông tin thành công!");
                 QuanLyKhachHang fm = new QuanLyKhachHang();
                 this.dispose();

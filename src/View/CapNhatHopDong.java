@@ -3,28 +3,47 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package swing5_camdo;
+package View;
 
+import Connect.DatabaseHelper;
 import Dao.HopDongDao;
+import Dao.NhanVienDao;
 import DoDung.HopDong;
-import View.TrangChu;
+import DoDung.NhanVien;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.sql.*;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author pc
+ * @author Admin
  */
-public class AddHopDong extends javax.swing.JFrame {
-
+public class CapNhatHopDong extends javax.swing.JFrame {
+    private List<HopDong> list;
     /**
-     * Creates new form AddHopDong
+     * Creates new form CapNhatHopDong
      */
-    public AddHopDong() {
+    public CapNhatHopDong() {
         initComponents();
+        LoadCCB();
     }
 
+    public void LoadCCB(){
+        try {
+            String sql = "select maHD from HopDong";
+            Connection conn = DatabaseHelper.getConnection();
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {                
+                String id = rs.getString("maHD");
+                jComboBox1.addItem(id);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,7 +68,6 @@ public class AddHopDong extends javax.swing.JFrame {
         labelSDT = new javax.swing.JLabel();
         labelLaiNgay = new javax.swing.JLabel();
         btnXacNhan = new javax.swing.JButton();
-        tfmaHD = new javax.swing.JTextField();
         btnHuy = new javax.swing.JButton();
         labelTenKH = new javax.swing.JLabel();
         tfngayCam = new javax.swing.JTextField();
@@ -59,9 +77,10 @@ public class AddHopDong extends javax.swing.JFrame {
         tfTienCam = new javax.swing.JTextField();
         tfsoNgay = new javax.swing.JTextField();
         backBtn = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Thêm Hợp Đồng");
+        setTitle("Cập nhật hợp đồng");
         setLocation(new java.awt.Point(450, 100));
 
         jPanel1.setBackground(new java.awt.Color(236, 240, 241));
@@ -86,7 +105,7 @@ public class AddHopDong extends javax.swing.JFrame {
 
         labelTitle.setFont(new java.awt.Font("UTM Avo", 1, 18)); // NOI18N
         labelTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelTitle.setText("THÊM HỢP ĐỒNG CẦM ĐỒ");
+        labelTitle.setText("Cập nhật hợp đồng");
 
         labelDoCamCo.setFont(new java.awt.Font("UTM Avo", 0, 12)); // NOI18N
         labelDoCamCo.setText("Đồ cầm cố:");
@@ -125,6 +144,15 @@ public class AddHopDong extends javax.swing.JFrame {
             }
         });
 
+        jComboBox1.setBackground(new java.awt.Color(236, 240, 241));
+        jComboBox1.setFont(new java.awt.Font("UTM Avo", 0, 11)); // NOI18N
+        jComboBox1.setForeground(new java.awt.Color(0, 102, 102));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -153,20 +181,20 @@ public class AddHopDong extends javax.swing.JFrame {
                                     .addComponent(labelNgayCam))
                                 .addGap(30, 30, 30)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(tfDoCamCo)
+                                    .addComponent(tfDoCamCo, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
                                     .addComponent(tfDiaChi)
                                     .addComponent(tfTenKH)
-                                    .addComponent(tfmaHD)
-                                    .addComponent(tfSoDT, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfCMND, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfTienCam, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfsoNgay)
-                                    .addComponent(tfLaiNgay, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfngayCam, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(tfsoNgay, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfSoDT, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+                                    .addComponent(tfCMND)
+                                    .addComponent(tfTienCam)
+                                    .addComponent(tfLaiNgay)
+                                    .addComponent(tfngayCam, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
+                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(labelTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
@@ -176,15 +204,15 @@ public class AddHopDong extends javax.swing.JFrame {
                 .addComponent(backBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelTitle)
-                .addGap(32, 32, 32)
+                .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(labelTenKH)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(labelSoHD)
-                            .addComponent(tfmaHD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelSoHD))
                         .addGap(18, 18, 18)
-                        .addComponent(labelTenKH))
-                    .addComponent(tfTenKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(tfTenKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelDoCamCo)
@@ -244,37 +272,10 @@ public class AddHopDong extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfCMNDActionPerformed
 
-    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-        try {
-            // TODO add your handling code here:
-            new TrangChu().show();
-        } catch (Exception ex) {
-            Logger.getLogger(AddHopDong.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        this.dispose();
-    }//GEN-LAST:event_backBtnActionPerformed
-
     private void btnXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacNhanActionPerformed
         // TODO add your handling code here:
-        if (tfmaHD.getText().equals("")) {
-            JOptionPane.showMessageDialog(this,"Vui lòng nhập mã hợp đồng");
-            return;
-        }
-        if (tfTenKH.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ họ tên");
-            return;
-        }
-        if (tfDoCamCo.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Vui lòng nhập tên đồ cầm");
-            return;
-        }
-        if (tfDiaChi.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Vui lòng nhập địa chỉ");
-            return;
-        }
+        HopDong hd = new HopDong();
         try {
-            HopDong hd = new HopDong();
-            hd.setMaHD(tfmaHD.getText());
             hd.setTenKH(tfTenKH.getText());
             hd.setDoCam(tfDoCamCo.getText());
             hd.setDiaChi(tfDiaChi.getText());
@@ -284,22 +285,57 @@ public class AddHopDong extends javax.swing.JFrame {
             hd.setLaiNgay(Float.parseFloat(tfLaiNgay.getText()));
             hd.setNgayCam(tfngayCam.getText());
             hd.setSoNgay(Integer.parseInt(tfsoNgay.getText()));
+            hd.setMaHD((String) jComboBox1.getSelectedItem());
 
             HopDongDao dao = new HopDongDao();
-            dao.insertHD(hd);
-           
-            JOptionPane.showMessageDialog(this,"Thêm hợp đồng thành công");
+            dao.update(hd);
+            JOptionPane.showMessageDialog(this, "Cập Nhật thành công");
             new TrangChu().show();
-            this.hide();
-            
-            
-            
-                    
+            this.dispose();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "error" + e.getMessage());
+            JOptionPane.showMessageDialog(this, "Thất Bại");
+            e.printStackTrace();
         }
+            
         
+        
+
     }//GEN-LAST:event_btnXacNhanActionPerformed
+
+    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+        try {
+            new TrangChu().show();
+        } catch (Exception ex) {
+            Logger.getLogger(CapNhatHopDong.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.dispose();
+    }//GEN-LAST:event_backBtnActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+        String sql = "select * from HopDong where maHD = ?";
+        String id = ((String) jComboBox1.getSelectedItem());
+        try {
+            Connection conn = DatabaseHelper.getConnection();
+            PreparedStatement pr = conn.prepareStatement(sql); 
+            pr.setString(1, id );
+            ResultSet rs = pr.executeQuery();
+            if(rs.next()){
+                tfTenKH.setText(rs.getString("tenKH"));
+                tfDoCamCo.setText(rs.getString("doCamCo"));
+                tfDiaChi.setText(rs.getString("diachi"));
+                tfSoDT.setText(rs.getString("soDT"));
+                tfCMND.setText(rs.getString("soCM"));
+                tfTienCam.setText(rs.getString("soTienCam"));
+                tfLaiNgay.setText(rs.getString("laiNgay"));
+                tfngayCam.setText(rs.getString("ngayCam"));
+                tfsoNgay.setText(rs.getString("soNgayCam"));
+                
+                
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -318,20 +354,20 @@ public class AddHopDong extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddHopDong.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CapNhatHopDong.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddHopDong.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CapNhatHopDong.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddHopDong.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CapNhatHopDong.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddHopDong.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CapNhatHopDong.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddHopDong().setVisible(true);
+                new CapNhatHopDong().setVisible(true);
             }
         });
     }
@@ -340,6 +376,7 @@ public class AddHopDong extends javax.swing.JFrame {
     private javax.swing.JButton backBtn;
     private javax.swing.JButton btnHuy;
     private javax.swing.JButton btnXacNhan;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labelCMND;
     private javax.swing.JLabel labelDiaChi;
@@ -359,7 +396,6 @@ public class AddHopDong extends javax.swing.JFrame {
     private javax.swing.JTextField tfSoDT;
     private javax.swing.JTextField tfTenKH;
     private javax.swing.JTextField tfTienCam;
-    private javax.swing.JTextField tfmaHD;
     private javax.swing.JTextField tfngayCam;
     private javax.swing.JTextField tfsoNgay;
     // End of variables declaration//GEN-END:variables

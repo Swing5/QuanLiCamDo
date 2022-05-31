@@ -1,4 +1,4 @@
-create database QuanLiCamDo
+﻿create database QuanLiCamDo
 go
 use QuanLiCamDo
 go
@@ -30,7 +30,7 @@ create table HopDong(
 	soTienCam	money,
 	laiNgay		money,
 	ngayCam		nchar(30),
-	hanCam		nchar(30)
+	soNgayCam	int
 )
 create table KhachHang(
 	maKH nvarchar(20) not null primary key ,
@@ -38,3 +38,11 @@ create table KhachHang(
 	diaChi nvarchar(300),
 	SDT int
 )
+
+insert into HopDong(maHD,tenKH,doCamCo,diaChi,soDT,soCM,soTienCam,laiNgay,ngayCam,soNgayCam)
+values ('HD001',N'Nguyễn Văn T',N'Xe máy',N'Bình Dương','0356226554','236521452','10000000','10000','12/01/2021',30),
+		('HD003',N'Nguyễn Văn A',N'Xe máy',N'Bình Dương','0356226551','236521451','10000000','10000','12/01/2021',30),
+		('HD004',N'Nguyễn Văn B',N'Xe máy',N'Bình Dương','0356226552','236521453','10000000','10000','12/01/2021',30),
+		('HD005',N'Nguyễn Văn C',N'Xe máy',N'Bình Dương','0356226553','236521454','10000000','10000','12/01/2021',30),
+		('HD006',N'Nguyễn Văn D',N'Xe máy',N'Bình Dương','0356226555','236521455','10000000','10000','12/01/2021',30),
+		('HD007',N'Nguyễn Văn E',N'Xe máy',N'Bình Dương','0356226556','236521456','10000000','10000','12/01/2021',30)
