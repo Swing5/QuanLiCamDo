@@ -82,6 +82,7 @@ public class CapNhatHopDong extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cập nhật hợp đồng");
         setLocation(new java.awt.Point(450, 100));
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(236, 240, 241));
 
@@ -281,10 +282,10 @@ public class CapNhatHopDong extends javax.swing.JFrame {
             hd.setDiaChi(tfDiaChi.getText());
             hd.setSoDT(tfSoDT.getText());
             hd.setSoCM(tfCMND.getText());
-            hd.setSoTienCam(Float.parseFloat(tfTienCam.getText()));
-            hd.setLaiNgay(Float.parseFloat(tfLaiNgay.getText()));
+            hd.setSoTienCam(tfTienCam.getText());
+            hd.setLaiNgay(tfLaiNgay.getText());
             hd.setNgayCam(tfngayCam.getText());
-            hd.setSoNgay(Integer.parseInt(tfsoNgay.getText()));
+            hd.setSoNgay(tfsoNgay.getText());
             hd.setMaHD((String) jComboBox1.getSelectedItem());
 
             HopDongDao dao = new HopDongDao();

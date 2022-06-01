@@ -56,6 +56,7 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Đăng nhập");
         setLocation(new java.awt.Point(350, 150));
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(236, 240, 241));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

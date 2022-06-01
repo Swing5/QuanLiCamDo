@@ -12,12 +12,12 @@ public class KhachHang {
     private String maKH;
     private String tenKH;
     private String diaChi;
-    private int SDT;
+    private String SDT;
 
     public KhachHang() {
     }
 
-    public KhachHang(String maKH, String tenKH, String diaChi, int SDT) {
+    public KhachHang(String maKH, String tenKH, String diaChi, String SDT) {
         this.maKH = maKH;
         this.tenKH = tenKH;
         this.diaChi = diaChi;
@@ -48,11 +48,11 @@ public class KhachHang {
         this.diaChi = diaChi;
     }
 
-    public int getSDT() {
+    public String getSDT() {
         return SDT;
     }
 
-    public void setSDT(int SDT) {
+    public void setSDT(String SDT) {
         this.SDT = SDT;
     }
     

@@ -112,6 +112,7 @@ public class QuanLiNhanVien extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Quản Lí Nhân Viên");
         setLocation(new java.awt.Point(400, 50));
+        setResizable(false);
 
         jPanel2.setBackground(new java.awt.Color(236, 240, 241));
 
@@ -399,7 +400,7 @@ public class QuanLiNhanVien extends javax.swing.JFrame {
 
     private void btDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteActionPerformed
         // TODO add your handling code here:
-       String id = tfMNV.getText();
+        String id = tfMNV.getText();
         StringBuilder sb = new StringBuilder();
         if(tfMNV.getText().equals("")){
             sb.append("Mã sinh viên không được để trống");

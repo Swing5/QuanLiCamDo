@@ -8,6 +8,7 @@ package Dao;
 import Connect.DatabaseHelper;
 import DoDung.HopDong;
 import DoDung.NhanVien;
+import java.io.ObjectStreamConstants;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -35,10 +36,10 @@ public class HopDongDao {
                 tc.setDiaChi(rs.getString("diaChi"));
                 tc.setSoDT(rs.getString("soDT"));
                 tc.setSoCM(rs.getString("soCM"));
-                tc.setSoTienCam(rs.getFloat("soTienCam"));
-                tc.setLaiNgay(rs.getFloat("laiNgay"));
+                tc.setSoTienCam(rs.getString("soTienCam"));
+                tc.setLaiNgay(rs.getString("laiNgay"));
                 tc.setNgayCam(rs.getString("ngayCam"));
-                tc.setSoNgay(rs.getInt("soNgayCam"));               
+                tc.setSoNgay(rs.getString("soNgayCam"));               
                 list.add(tc);
             }
         } catch (Exception e) {
@@ -58,18 +59,19 @@ public class HopDongDao {
         ps.setString(4,tc.getDiaChi());
         ps.setString(5,tc.getSoDT());
         ps.setString(6,tc.getSoCM());
-        ps.setFloat(7, (float) tc.getSoTienCam());
-        ps.setFloat(8, (float) tc.getLaiNgay());
+        ps.setString(7, tc.getSoTienCam());
+        ps.setString(8,  tc.getLaiNgay());
         ps.setString(9,tc.getNgayCam());
-        ps.setInt(10,tc.getSoNgay());
+        ps.setString(10,tc.getSoNgay());
         ps.executeUpdate();
     }
     public boolean delete(String maHD) throws Exception{
-        String sql = " delete from HopDong where maHD = ? ";
+        String sql = " delete from HopDong where maHD = ? or soCM = ?";
      
             Connection conn = DatabaseHelper.getConnection();
             PreparedStatement pr = conn.prepareStatement(sql);
                 pr.setString(1,maHD);
+                pr.setString(2,maHD);
        
         return pr.executeUpdate()>0;
     }
@@ -85,12 +87,120 @@ public class HopDongDao {
             ps.setString(3, hd.getDiaChi());
             ps.setString(4, hd.getSoDT());
             ps.setString(5, hd.getSoCM());
-            ps.setFloat(6, (float) hd.getSoTienCam());
-            ps.setFloat(7, (float)hd.getLaiNgay());
+            ps.setString(6, hd.getSoTienCam());
+            ps.setString(7, hd.getLaiNgay());
             ps.setString(8, hd.getNgayCam());
-            ps.setInt(9, hd.getSoNgay());
+            ps.setString(9, hd.getSoNgay());
             ps.setString(10, hd.getMaHD());
 
             ps.executeUpdate();
+    }
+    public HopDong findByCMND(String soCM) throws Exception{
+        String sql = "select maHD,tenKH,ngayCam,doCamCo,soNgayCam,soTienCam,laiNgay,giaHan "
+                + "from HopDong "
+                + "where soCM = ?";
+            
+        try {
+            Connection conn = DatabaseHelper.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            {
+            pstmt.setString(1, soCM);
+            
+            ResultSet rs = pstmt.executeQuery();
+            if(rs.next()){
+                HopDong hd = new HopDong();
+                hd.setMaHD(rs.getString("maHD"));
+                hd.setTenKH(rs.getString("tenKH"));
+                hd.setNgayCam(rs.getString("ngayCam"));
+                hd.setDoCam(rs.getString("doCamCo"));
+                hd.setSoNgay(rs.getString("soNgayCam"));
+                hd.setSoTienCam(rs.getString("soTienCam"));
+                hd.setLaiNgay(rs.getString("laiNgay")); 
+                hd.setGiaHanThem(rs.getString("giaHan"));
+                return hd;
+            }
+            }
+        } catch (Exception e) {
+        }
+        return null;
+            
+        }
+    
+    public boolean deleteThanhLi(String SoCM) throws Exception{
+        String sql = " delete from HopDong where soCM = ?";
+     
+            Connection conn = DatabaseHelper.getConnection();
+            PreparedStatement pr = conn.prepareStatement(sql);
+                pr.setString(1,SoCM);
+       
+        return pr.executeUpdate()>0;
+    }
+    
+    public ArrayList<HopDong> findHD(String maHD) throws ClassNotFoundException, SQLException{
+        Connection conn = DatabaseHelper.getConnection();
+        HopDong tc = new HopDong();
+        ArrayList<HopDong> list = new ArrayList<HopDong>();
+        String sql = "select * from HopDong where maHD like ?";
+        try {
+            PreparedStatement pr = conn.prepareStatement(sql);
+            pr.setString(1,"%"+maHD+"%");
+            ResultSet rs = pr.executeQuery();
+            while(rs.next()){
+
+                tc.setMaHD(rs.getString("maHD"));
+                tc.setTenKH(rs.getString("tenKH"));
+                tc.setDoCam(rs.getString("doCamCo"));
+                tc.setDiaChi(rs.getString("diaChi"));
+                tc.setSoDT(rs.getString("soDT"));
+                tc.setSoCM(rs.getString("soCM"));
+                tc.setSoTienCam(rs.getString("soTienCam"));
+                tc.setLaiNgay(rs.getString("laiNgay"));
+                tc.setNgayCam(rs.getString("ngayCam"));
+                tc.setSoNgay(rs.getString("soNgayCam"));  
+                list.add(tc);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+    
+    public void GiaHanHD(HopDong hd ) throws Exception{
+        String sql = "UPDATE HopDong "
+                + "SET giaHan = ?, liDo = ? "
+                + "WHERE maHD = ?";
+    
+        Connection conn = DatabaseHelper.getConnection();
+        PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, hd.getGiaHanThem());
+            ps.setString(2, hd.getGhiChu());
+            ps.setString(3, hd.getMaHD());
+
+            ps.executeUpdate();
+    }
+    
+    public ArrayList<HopDong> getListGiaHan() throws Exception{
+        ArrayList<HopDong> lsGH = new ArrayList<>();
+        String sql ="select maHD,tenKH,soNgayCam,giaHan,liDo" 
+                    +"from HopDong " 
+                    ;
+        Connection conn = DatabaseHelper.getConnection();
+        
+        try {
+            PreparedStatement pr = conn.prepareStatement(sql);
+            ResultSet rs = pr.executeQuery();
+            while(rs.next()){
+                HopDong tc = new HopDong();
+                tc.setMaHD(rs.getString("maHD"));
+                tc.setTenKH(rs.getString("tenKH"));
+                tc.setSoNgay(rs.getString("soNgayCam"));  
+                tc.setGiaHanThem(rs.getString("giaHan"));
+                tc.setGhiChu(rs.getString("liDO"));
+                lsGH.add(tc);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return lsGH;
     }
 }

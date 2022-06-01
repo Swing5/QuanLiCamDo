@@ -51,6 +51,7 @@ public class ThemKH extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(236, 240, 241));
 
@@ -198,7 +199,7 @@ public class ThemKH extends javax.swing.JFrame {
         ql.setMaKH(jTextField_id.getText());
         ql.setTenKH(jTextField_Title.getText());
         ql.setDiaChi(jTextField_Price.getText());
-        ql.setSDT(Integer.parseInt(jTextField1.getText()));
+        ql.setSDT(jTextField1.getText());
         boolean isOk=true;
             if(isOk){
             try {

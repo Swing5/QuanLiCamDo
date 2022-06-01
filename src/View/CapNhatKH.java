@@ -57,6 +57,7 @@ public class CapNhatKH extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cập nhật khách hàng");
+        setResizable(false);
 
         jPanel3.setBackground(new java.awt.Color(236, 240, 241));
 
@@ -256,7 +257,7 @@ public class CapNhatKH extends javax.swing.JFrame {
                 
                 bk.setTenKH(jTextField_Title.getText());
                 bk.setDiaChi(jTextField_Price.getText());
-                bk.setSDT(Integer.parseInt(jTextField_Price1.getText()));
+                bk.setSDT(jTextField_Price1.getText());
                 bk.setMaKH((String) jComboBox_id.getSelectedItem());
                 qlkh.updateUser(bk);
                 JOptionPane.showMessageDialog(this, "Bạn đã sửa thông tin thành công!");
@@ -287,7 +288,7 @@ public class CapNhatKH extends javax.swing.JFrame {
         }
        jTextField_Title.setText(ttkh.getTenKH());
        jTextField_Price.setText(ttkh.getDiaChi());
-       jTextField_Price1.setText(Integer.toString(ttkh.getSDT()));
+       jTextField_Price1.setText(ttkh.getSDT());
 
     }//GEN-LAST:event_jComboBox_idActionPerformed
 

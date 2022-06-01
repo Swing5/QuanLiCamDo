@@ -31,7 +31,7 @@ public class KhachHangDao {
                 tl.setMaKH(rs.getString("maKH"));
                 tl.setTenKH(rs.getString("tenKH"));
                 tl.setDiaChi(rs.getString("diaChi"));
-                tl.setSDT(rs.getInt("SDT"));
+                tl.setSDT(rs.getString("SDT"));
                 ltl.add(tl);
             }
         } catch (Exception e) {
@@ -68,7 +68,7 @@ public class KhachHangDao {
                 tl.setMaKH(rs.getString("maKH"));
                 tl.setTenKH(rs.getString("tenKH"));
                 tl.setDiaChi(rs.getString("diaChi"));
-                tl.setSDT(rs.getInt("SDT"));
+                tl.setSDT(rs.getString("SDT"));
                 ql.add(tl);
             }
         } catch (Exception e) {
@@ -85,7 +85,7 @@ public class KhachHangDao {
                 preparedStatement.setString(1, tl.getMaKH());
                 preparedStatement.setString(2, tl.getTenKH());
                 preparedStatement.setString(3, tl.getDiaChi());
-                preparedStatement.setInt(4, tl.getSDT());
+                preparedStatement.setString(4, tl.getSDT());
 //                int rs = preparedStatement.executeUpdate();
 //                System.out.println(rs);
                 preparedStatement.execute();
@@ -116,7 +116,7 @@ public class KhachHangDao {
             preparedStatement.setString(4, tl.getMaKH());
             preparedStatement.setString(1, tl.getTenKH());
             preparedStatement.setString(2, tl.getDiaChi());
-            preparedStatement.setInt(3, tl.getSDT());
+            preparedStatement.setString(3, tl.getSDT());
             preparedStatement.executeUpdate();
 
         } catch (Exception e) {
@@ -135,7 +135,7 @@ public class KhachHangDao {
                 ql.setMaKH(rs.getString("maKH"));
                 ql.setTenKH(rs.getString("tenKH"));
                 ql.setDiaChi(rs.getString("diaChi"));
-                ql.setSDT(rs.getInt("SDT"));
+                ql.setSDT(rs.getString("SDT"));
             }
         } catch (Exception e) {
             e.printStackTrace();

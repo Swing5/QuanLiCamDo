@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -68,6 +69,7 @@ public class QuanLyKhachHang extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Quản Lí Khách Hàng");
+        setResizable(false);
 
         jPanel3.setBackground(new java.awt.Color(236, 240, 241));
 
@@ -356,6 +358,7 @@ public class QuanLyKhachHang extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
             showTable();
+            JOptionPane.showMessageDialog(this, "Làm mới thành công");
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(QuanLyKhachHang.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {

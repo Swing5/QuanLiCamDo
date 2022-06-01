@@ -5,9 +5,14 @@
  */
 package swing5_camdo;
 
+import Dao.HopDongDao;
+import DoDung.HopDong;
 import View.TrangChu;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,6 +27,7 @@ public class ThanhLyHopDong extends javax.swing.JFrame {
         initComponents();
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,69 +39,68 @@ public class ThanhLyHopDong extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         labeltitle = new javax.swing.JLabel();
-        labelSoTienCam = new javax.swing.JLabel();
-        labelTongTienLai = new javax.swing.JLabel();
         btnHuy = new javax.swing.JButton();
-        tfSoHD = new javax.swing.JTextField();
-        tfLaiNgay = new javax.swing.JTextField();
+        tfsoCM = new javax.swing.JTextField();
         btnXacNhan = new javax.swing.JButton();
-        labelSoHD = new javax.swing.JLabel();
-        labelNgayKT = new javax.swing.JLabel();
-        tfTongTienLai = new javax.swing.JTextField();
-        labelTongTienTra = new javax.swing.JLabel();
-        tfSoTienCam = new javax.swing.JTextField();
-        tfTenKH = new javax.swing.JTextField();
-        labelSoNgayCam = new javax.swing.JLabel();
-        labelNgayCam = new javax.swing.JLabel();
-        labelLaiNgay = new javax.swing.JLabel();
-        labelTenKH = new javax.swing.JLabel();
-        tfNgayKT = new javax.swing.JTextField();
-        tfSoNgayCam = new javax.swing.JTextField();
-        tfNgayCam = new javax.swing.JTextField();
-        tfTongTienTra = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jPanel2 = new javax.swing.JPanel();
+        labelNgayCam = new javax.swing.JLabel();
+        tfsoTien = new javax.swing.JTextField();
+        tfngayCam = new javax.swing.JTextField();
+        labelTenKH = new javax.swing.JLabel();
+        labelSoNgayCam = new javax.swing.JLabel();
+        tfsoNgay = new javax.swing.JTextField();
+        labelNgayKT = new javax.swing.JLabel();
+        tfLaiNgay = new javax.swing.JTextField();
+        labelLaiNgay = new javax.swing.JLabel();
+        tfmaHD = new javax.swing.JTextField();
+        tftenKH = new javax.swing.JTextField();
+        labelSoHD = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
+        jSeparator5 = new javax.swing.JSeparator();
+        jSeparator6 = new javax.swing.JSeparator();
+        jSeparator7 = new javax.swing.JSeparator();
+        jSeparator8 = new javax.swing.JSeparator();
+        jLabel1 = new javax.swing.JLabel();
+        tfDoCamCo = new javax.swing.JTextField();
+        jSeparator9 = new javax.swing.JSeparator();
+        jLabel2 = new javax.swing.JLabel();
+        tfgiaHanThem = new javax.swing.JTextField();
+        jSeparator10 = new javax.swing.JSeparator();
+        labelSoTienCam = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        btHienThi = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Thanh Lí Hợp Đồng");
         setLocation(new java.awt.Point(500, 100));
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(236, 240, 241));
 
-        labeltitle.setFont(new java.awt.Font("UTM Avo", 0, 18)); // NOI18N
+        labeltitle.setFont(new java.awt.Font("UTM Avo", 1, 18)); // NOI18N
+        labeltitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labeltitle.setText("THANH LÝ HỢP ĐỒNG");
 
-        labelSoTienCam.setFont(new java.awt.Font("UTM Avo", 0, 11)); // NOI18N
-        labelSoTienCam.setText("Số tiền cầm:");
-
-        labelTongTienLai.setFont(new java.awt.Font("UTM Avo", 0, 11)); // NOI18N
-        labelTongTienLai.setText("Tổng số tiền lãi:");
-
+        btnHuy.setBackground(new java.awt.Color(255, 102, 102));
         btnHuy.setFont(new java.awt.Font("UTM Avo", 0, 11)); // NOI18N
         btnHuy.setText("Hủy");
+        btnHuy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHuyActionPerformed(evt);
+            }
+        });
 
+        btnXacNhan.setBackground(new java.awt.Color(0, 204, 0));
         btnXacNhan.setFont(new java.awt.Font("UTM Avo", 0, 11)); // NOI18N
         btnXacNhan.setText("Xác nhận");
-
-        labelSoHD.setFont(new java.awt.Font("UTM Avo", 0, 11)); // NOI18N
-        labelSoHD.setText("Số hợp đồng:");
-
-        labelNgayKT.setFont(new java.awt.Font("UTM Avo", 0, 11)); // NOI18N
-        labelNgayKT.setText("Ngày kết thúc:");
-
-        labelTongTienTra.setFont(new java.awt.Font("UTM Avo", 0, 11)); // NOI18N
-        labelTongTienTra.setText("Tổng số tiền phải trả:");
-
-        labelSoNgayCam.setFont(new java.awt.Font("UTM Avo", 0, 11)); // NOI18N
-        labelSoNgayCam.setText("Số ngày cầm:");
-
-        labelNgayCam.setFont(new java.awt.Font("UTM Avo", 0, 11)); // NOI18N
-        labelNgayCam.setText("Ngày cầm: ");
-
-        labelLaiNgay.setFont(new java.awt.Font("UTM Avo", 0, 11)); // NOI18N
-        labelLaiNgay.setText("Lãi ngày:");
-
-        labelTenKH.setFont(new java.awt.Font("UTM Avo", 0, 11)); // NOI18N
-        labelTenKH.setText("Tên khách hàng:");
+        btnXacNhan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXacNhanActionPerformed(evt);
+            }
+        });
 
         jButton1.setFont(new java.awt.Font("UTM Avo", 0, 11)); // NOI18N
         jButton1.setText("Back");
@@ -105,108 +110,234 @@ public class ThanhLyHopDong extends javax.swing.JFrame {
             }
         });
 
+        jPanel2.setBackground(new java.awt.Color(236, 240, 241));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "THÔNG TIN HỢP ĐỒNG", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("UTM Avo", 3, 12), new java.awt.Color(51, 51, 51))); // NOI18N
+
+        labelNgayCam.setFont(new java.awt.Font("UTM Avo", 0, 11)); // NOI18N
+        labelNgayCam.setText("Ngày cầm: ");
+
+        tfsoTien.setBackground(new java.awt.Color(236, 240, 241));
+        tfsoTien.setFont(new java.awt.Font("UTM Avo", 0, 12)); // NOI18N
+        tfsoTien.setBorder(null);
+
+        tfngayCam.setBackground(new java.awt.Color(236, 240, 241));
+        tfngayCam.setFont(new java.awt.Font("UTM Avo", 0, 12)); // NOI18N
+        tfngayCam.setBorder(null);
+
+        labelTenKH.setFont(new java.awt.Font("UTM Avo", 0, 11)); // NOI18N
+        labelTenKH.setText("Tên khách hàng:");
+
+        labelSoNgayCam.setFont(new java.awt.Font("UTM Avo", 0, 11)); // NOI18N
+        labelSoNgayCam.setText("Số tiền cầm:");
+
+        tfsoNgay.setBackground(new java.awt.Color(236, 240, 241));
+        tfsoNgay.setFont(new java.awt.Font("UTM Avo", 0, 12)); // NOI18N
+        tfsoNgay.setBorder(null);
+
+        labelNgayKT.setFont(new java.awt.Font("UTM Avo", 0, 11)); // NOI18N
+        labelNgayKT.setText("Số ngày cầm:");
+
+        tfLaiNgay.setBackground(new java.awt.Color(236, 240, 241));
+        tfLaiNgay.setFont(new java.awt.Font("UTM Avo", 0, 12)); // NOI18N
+        tfLaiNgay.setBorder(null);
+
+        labelLaiNgay.setFont(new java.awt.Font("UTM Avo", 0, 11)); // NOI18N
+        labelLaiNgay.setText("Lãi ngày:");
+
+        tfmaHD.setBackground(new java.awt.Color(236, 240, 241));
+        tfmaHD.setFont(new java.awt.Font("UTM Avo", 0, 12)); // NOI18N
+        tfmaHD.setBorder(null);
+
+        tftenKH.setBackground(new java.awt.Color(236, 240, 241));
+        tftenKH.setFont(new java.awt.Font("UTM Avo", 0, 12)); // NOI18N
+        tftenKH.setBorder(null);
+
+        labelSoHD.setFont(new java.awt.Font("UTM Avo", 0, 11)); // NOI18N
+        labelSoHD.setText("Mã hợp đồng:");
+
+        jLabel1.setFont(new java.awt.Font("UTM Avo", 0, 11)); // NOI18N
+        jLabel1.setText("Đồ Cầm Cố:");
+
+        tfDoCamCo.setBackground(new java.awt.Color(236, 240, 241));
+        tfDoCamCo.setFont(new java.awt.Font("UTM Avo", 0, 12)); // NOI18N
+        tfDoCamCo.setBorder(null);
+
+        jLabel2.setFont(new java.awt.Font("UTM Avo", 0, 11)); // NOI18N
+        jLabel2.setText("Gia hạn thêm: ");
+
+        tfgiaHanThem.setBackground(new java.awt.Color(236, 240, 241));
+        tfgiaHanThem.setBorder(null);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator9)
+                    .addComponent(jSeparator8)
+                    .addComponent(jSeparator7)
+                    .addComponent(jSeparator6)
+                    .addComponent(jSeparator5)
+                    .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jSeparator4)
+                    .addComponent(jSeparator10)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfDoCamCo))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(labelSoHD)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tfmaHD, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(labelTenKH)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tftenKH, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 1, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(labelNgayCam)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfngayCam))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(labelNgayKT)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfsoNgay))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(labelSoNgayCam)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfsoTien))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(labelLaiNgay)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfLaiNgay))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfgiaHanThem)))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfmaHD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelSoHD))
+                .addGap(0, 0, 0)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tftenKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelTenKH))
+                .addGap(2, 2, 2)
+                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelNgayCam)
+                    .addComponent(tfngayCam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
+                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(tfDoCamCo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0)
+                .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfsoNgay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelNgayKT))
+                .addGap(0, 0, 0)
+                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelSoNgayCam)
+                    .addComponent(tfsoTien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
+                .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelLaiNgay)
+                    .addComponent(tfLaiNgay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
+                .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(tfgiaHanThem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0)
+                .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        labelSoTienCam.setFont(new java.awt.Font("UTM Avo", 0, 11)); // NOI18N
+        labelSoTienCam.setText("Số CMND/CCCD:");
+
+        btHienThi.setText("Hiển Thị");
+        btHienThi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btHienThiActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(labeltitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jSeparator1)
+            .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(36, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 12, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(labelTenKH)
-                                            .addComponent(labelSoHD)
-                                            .addComponent(labelNgayCam)
-                                            .addComponent(labelNgayKT)
-                                            .addComponent(labelSoNgayCam)
-                                            .addComponent(labelLaiNgay)
-                                            .addComponent(labelTongTienLai)
-                                            .addComponent(labelTongTienTra)
-                                            .addComponent(labelSoTienCam))
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(18, 18, 18)
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                        .addComponent(tfTongTienTra)
-                                                        .addComponent(tfTongTienLai, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addComponent(tfNgayCam, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                                .addGap(17, 17, 17)
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(tfLaiNgay, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(tfSoNgayCam, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(tfNgayKT, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(tfSoTienCam, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(tfTenKH, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(tfSoHD, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(53, 53, 53)
-                                        .addComponent(btnXacNhan)
-                                        .addGap(93, 93, 93)
-                                        .addComponent(btnHuy, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(25, 25, 25))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(labeltitle)
-                                .addGap(106, 106, 106))))
+                        .addContainerGap()
+                        .addComponent(jButton1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(77, 77, 77)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelSoTienCam)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(tfsoCM, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btHienThi, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addComponent(btnXacNhan)
+                        .addGap(85, 85, 85)
+                        .addComponent(btnHuy, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(4, 4, 4)
                 .addComponent(jButton1)
-                .addGap(23, 23, 23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labeltitle)
-                .addGap(27, 27, 27)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelSoHD)
-                            .addComponent(tfSoHD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelTenKH)
-                            .addComponent(tfTenKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tfSoTienCam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelSoTienCam))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelNgayCam)
-                            .addComponent(tfNgayCam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelNgayKT)
-                            .addComponent(tfNgayKT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelSoNgayCam)
-                            .addComponent(tfSoNgayCam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(labelLaiNgay))
-                    .addComponent(tfLaiNgay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelSoTienCam)
+                .addGap(1, 1, 1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfsoCM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btHienThi))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelTongTienLai)
-                    .addComponent(tfTongTienLai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelTongTienTra)
-                    .addComponent(tfTongTienTra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnXacNhan)
-                    .addComponent(btnHuy))
-                .addContainerGap(22, Short.MAX_VALUE))
+                    .addComponent(btnHuy)
+                    .addComponent(btnXacNhan))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -217,7 +348,9 @@ public class ThanhLyHopDong extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -232,6 +365,79 @@ public class ThanhLyHopDong extends javax.swing.JFrame {
         }
         this.hide();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btHienThiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btHienThiActionPerformed
+        // TODO add your handling code here:
+        if(tfsoCM.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Mời nhập số CMDN/CCCD");
+            return;
+        }
+        try {
+            HopDongDao dao = new HopDongDao();
+            HopDong hd = dao.findByCMND(tfsoCM.getText());
+            
+            if(hd != null ){
+                tfmaHD.setText(hd.getMaHD());
+                tftenKH.setText(hd.getTenKH());
+                tfngayCam.setText(hd.getNgayCam());
+                tfDoCamCo.setText(hd.getDoCam());
+                tfsoNgay.setText(hd.getSoNgay());
+                tfsoTien.setText(hd.getSoTienCam());
+                tfLaiNgay.setText(hd.getLaiNgay());
+                tfgiaHanThem.setText(hd.getGiaHanThem());
+
+                dao.findByCMND(tfsoCM.getText());
+            }else{
+                JOptionPane.showMessageDialog(this, "Không có Hợp đồng");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_btHienThiActionPerformed
+
+    private void btnXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacNhanActionPerformed
+        // TODO add your handling code here:
+        if(tfsoTien.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Chưa tìm thấy hợp đồng");
+            return;
+        }
+        float soTien = Float.parseFloat(tfsoTien.getText());
+        int soNgay = Integer.parseInt(tfsoNgay.getText());
+        float laiNgay = Float.parseFloat(tfLaiNgay.getText());
+        float giaHanThem = Float.parseFloat(tfgiaHanThem.getText());
+        float soTra = soTien + ((soNgay + giaHanThem) * laiNgay);
+        String abc = String.valueOf(soTra);
+        String ms = "-----------------------------";
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        JOptionPane.showMessageDialog(this,"Số tiền thanh lí = " + abc + "VNĐ\n" + ms +" \nDate " + dtf.format(now));
+        
+        int confirm = JOptionPane.showConfirmDialog(ThanhLyHopDong.this, "Hợp đồng đã được thanh lí bạn có muốn xoá không"); 
+            if(confirm == JOptionPane.YES_OPTION){
+                try {
+                    HopDongDao dao = new HopDongDao();
+                    dao.delete(tfsoCM.getText());
+                    JOptionPane.showMessageDialog(this,"Hợp đồng đã được thanh lí");
+                    new TrangChu().show();
+                    this.dispose();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
+                    e.printStackTrace();
+                }
+            }
+        
+    }//GEN-LAST:event_btnXacNhanActionPerformed
+
+    private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
+        try {
+            // TODO add your handling code here:
+            new TrangChu().show();
+            this.dispose();
+        } catch (Exception ex) {
+            Logger.getLogger(ThanhLyHopDong.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_btnHuyActionPerformed
 
     /**
      * @param args the command line arguments
@@ -269,10 +475,24 @@ public class ThanhLyHopDong extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btHienThi;
     private javax.swing.JButton btnHuy;
     private javax.swing.JButton btnXacNhan;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator10;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JSeparator jSeparator9;
     private javax.swing.JLabel labelLaiNgay;
     private javax.swing.JLabel labelNgayCam;
     private javax.swing.JLabel labelNgayKT;
@@ -280,17 +500,19 @@ public class ThanhLyHopDong extends javax.swing.JFrame {
     private javax.swing.JLabel labelSoNgayCam;
     private javax.swing.JLabel labelSoTienCam;
     private javax.swing.JLabel labelTenKH;
-    private javax.swing.JLabel labelTongTienLai;
-    private javax.swing.JLabel labelTongTienTra;
     private javax.swing.JLabel labeltitle;
+    private javax.swing.JTextField tfDoCamCo;
     private javax.swing.JTextField tfLaiNgay;
-    private javax.swing.JTextField tfNgayCam;
-    private javax.swing.JTextField tfNgayKT;
-    private javax.swing.JTextField tfSoHD;
-    private javax.swing.JTextField tfSoNgayCam;
-    private javax.swing.JTextField tfSoTienCam;
-    private javax.swing.JTextField tfTenKH;
-    private javax.swing.JTextField tfTongTienLai;
-    private javax.swing.JTextField tfTongTienTra;
+    private javax.swing.JTextField tfgiaHanThem;
+    private javax.swing.JTextField tfmaHD;
+    private javax.swing.JTextField tfngayCam;
+    private javax.swing.JTextField tfsoCM;
+    private javax.swing.JTextField tfsoNgay;
+    private javax.swing.JTextField tfsoTien;
+    private javax.swing.JTextField tftenKH;
     // End of variables declaration//GEN-END:variables
+
+    private void getText(double soTienCam) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
